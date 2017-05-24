@@ -1,0 +1,15 @@
+.header-card {
+  background-color: rgba(50, 50, 50, 0.6);
+  display: flex;
+  justify-content: space-between;
+  padding-left: 70px;
+  width: 480px;
+}
+
+.header-card-text {
+  color: #FFFFFF;
+  font-weight: 300;
+  margin: 0 auto;
+  padding: 15px 15px 5px 0px;
+  /*width: 150px;*/
+}

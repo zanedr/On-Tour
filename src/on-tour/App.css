@@ -1,0 +1,213 @@
+.App {
+  text-align: center;
+}
+
+/*TitleScreen*/
+#main-div {
+  text-align: center;
+  color: #FFFFFF;
+  margin: 0;
+  height: 100vh;
+  width: 100%;
+}
+
+#main-title {
+  font-size: 72px;
+  font-weight: 300;
+  padding: 35vh 0 5px;
+}
+
+/*InitialInfo*/
+#initial-box {
+  align-items: center;
+  background-color: rgba(127, 127, 127, 0.5);
+  border-radius: 15px;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  margin: 27vh auto;
+  text-align: center;
+  width: 50%;
+}
+
+.initial-box-text {
+  margin: 20px auto 10px;
+  font-weight: 300;
+  width: 80%;
+}
+
+input {
+  border: none;
+  margin: 5px;
+  text-align: center;
+  width: 80%;
+}
+
+input[type='submit'] {
+  padding: 5px;
+  margin-bottom: 35px;
+  transition-duration: 0.1s;
+}
+
+input[type='submit']:hover {
+  background-color: #333333;
+  color: rgb(127, 127, 127);
+  transition-duration: 0.1s;
+}
+
+input[type='text'] {
+  padding: 5px 0;
+}
+
+/*Main*/
+#main {
+  display: inline-block;
+}
+
+#main-left {
+  width: 551;
+}
+
+#main-right {
+
+}
+
+/*HeaderCard*/
+.header-card {
+  background-color: rgba(50, 50, 50, 0.6);
+  display: flex;
+  justify-content: space-between;
+  padding-left: 5vw;
+  padding-right: 2vw;
+  width: 41vw;
+}
+
+.header-card-text {
+  color: #FFFFFF;
+  font-weight: 300;
+  margin: 0 auto;
+  padding: 15px 15px 5px 0px;
+  /*width: 150px;*/
+}
+
+/*GigList*/
+#giglist {
+  width: 551px;
+}
+
+/*GigCard*/
+
+.gig-card {
+  background-color: rgba(200, 200, 200, 0.6);
+  display: flex;
+  height: 50px;
+  justify-content: space-around;
+  vertical-align: middle;
+  width: 48vw;
+}
+
+.gig-card:hover {
+  background-color: rgba(100, 100, 100, 0.6);
+}
+
+.gig-card-text {
+  color: #FFFFFF;
+  font-weight: 300;
+  margin: 0;
+  overflow: hidden;
+  height: 10px;
+  padding: 15px 5px 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 110px;
+}
+
+.gig-card-number {
+  color: #FFFFFF;
+  font-weight: 300;
+  margin: 0;
+  overflow: hidden;
+  padding: 15px 0 10px 30px;
+  text-overflow: ellipsis;
+  width: 40px;
+}
+
+/*Totals*/
+
+#totals {
+  color: #FFFFFF;
+  font-weight: 300;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.totals-labels {
+  background-color: rgba(78, 56, 46, 0.75);
+  padding: 5px 0;
+  display: flex;
+  margin: 0;
+  justify-content: space-around;
+  vertical-align: middle;
+  width: 50vw;
+}
+
+.total-label {
+  font-size: 14px;
+  font-weight: 300;
+  margin: 0;
+}
+
+.totals-card {
+  background-color: rgba(200, 200, 200, 0.6);
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-around;
+  vertical-align: middle;
+  width: 50vw;
+}
+
+.total {
+  font-size: 16px;
+  font-weight: 300;
+  margin: 0;
+}
+
+.totals-card-print {
+  background-color: rgba(78, 56, 46, 0.75);
+  padding: 10px;
+}
+
+/*Notes*/
+
+#note-card {
+  background-color: rgba(240, 240, 240, 0.75);
+  bottom: 100px;
+  height: 200px;
+  margin: 0;
+  position: absolute;
+  right: 0;
+  width: 50vw;
+}
+
+.note-list {
+  background-color: rgba(78, 56, 46, 0.75);
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: 300;
+  height: 15px;
+  margin: 0 auto;
+  padding: 10px 0 15px 10px;
+}
+
+/*Map*/
+
+#map {
+  background-color: rgba(240, 240, 240, 0.75);
+  height: 450px;
+  margin-top: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50vw;
+}

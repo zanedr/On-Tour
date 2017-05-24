@@ -1,0 +1,40 @@
+#initial-box {
+  align-items: center;
+  background-color: rgba(127, 127, 127, 0.5);
+  border-radius: 15px;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  margin: 27vh auto;
+  text-align: center;
+  width: 50%;
+}
+
+.initial-box-text {
+  margin: 20px auto 10px;
+  font-weight: 300;
+  width: 80%;
+}
+
+input {
+  border: none;
+  margin: 5px;
+  text-align: center;
+  width: 80%;
+}
+
+input[type='submit'] {
+  padding: 5px;
+  margin-bottom: 35px;
+  transition-duration: 0.1s;
+}
+
+input[type='submit']:hover {
+  background-color: #333333;
+  color: rgb(127, 127, 127);
+  transition-duration: 0.1s;
+}
+
+input[type='text'] {
+  padding: 5px 0;
+}
