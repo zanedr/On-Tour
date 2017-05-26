@@ -59,6 +59,30 @@ input[type='text'] {
   padding: 5px 0;
 }
 
+.initial-p {
+  font-size: 12px;
+  margin: 5px auto 0;
+  font-weight: 300;
+  width: 80%;
+}
+
+.initial-p-link {
+  color: #FFFFFF;
+  margin-bottom: 5px;
+}
+
+.initial-info-error {
+  align-items: center;
+  background-color: rgba(127, 127, 127, 0.5);
+  border-radius: 15px;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  margin: 27vh auto;
+  text-align: center;
+  width: 50%;
+}
+
 /*Main*/
 #main {
   display: inline-block;
@@ -132,6 +156,151 @@ input[type='text'] {
   width: 40px;
 }
 
+/*AddGig*/
+
+#add-gig-container {
+  background-color: rgba(50, 50, 50, 0.6);
+  border-bottom-right-radius: 15px;
+  border-bottom: 1px rgba(200, 200, 200, 0.6) solid;
+  border-right: 1px rgba(200, 200, 200, 0.6) solid;
+  color: #FFFFFF;
+  height: 30px;
+  margin: 0;
+  width: 100px;
+}
+
+#add-gig-container:hover {
+  background-color: rgba(100, 100, 100, 0.6)
+}
+
+.add-gig {
+  margin: 0;
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+/*Pop up AddGigInfo*/
+.add-gig-info {
+  text-align: center;
+  border-radius: 8px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 50%;
+  width: 50%;
+  z-index: 2;
+  background-color: rgba(100, 100, 100, 0.9);
+  color: black;
+  padding-bottom: 20px;
+}
+
+.add-gig-info-inputs-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.add-gig-info-exit {
+  border: none;
+  border-radius: 50%;
+  position: absolute;
+  right: 0;
+  vertical-align: top;
+}
+
+.add-gig-info-title {
+  color: #FFFFFF;
+  margin: 15px auto 0;
+}
+
+.add-gig-info-input {
+  border: none;
+  margin: 5px;
+  text-align: center;
+  width: 80%;
+}
+
+.add-gig-info-location {
+  margin: 15px auto 0;
+}
+
+.add-gig-info-venue {
+  margin: 20px auto 0;
+}
+
+.add-gig-info-notes {
+  height: 40%;
+  margin: 20px auto 0;
+  text-align: left;
+}
+
+.add-gig-info-save {
+  margin: 20px auto 10px;
+}
+
+/*Pop up EditGigInfo*/
+.edit-gig-info {
+  text-align: center;
+  border-radius: 8px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  height: 48vh;
+  width: 48vw;
+  z-index: 2;
+  background-color: rgba(100, 100, 100, 0.9);
+  color: black;
+  padding-bottom: 20px;
+}
+
+.edit-gig-info-inputs-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.edit-gig-info-exit {
+  border: none;
+  border-radius: 50%;
+  position: absolute;
+  right: 0;
+  vertical-align: top;
+}
+
+.edit-gig-info-title {
+  color: #FFFFFF;
+  margin: 15px auto 0;
+}
+
+.edit-gig-info-input {
+  border: none;
+  margin: 5px;
+  text-align: center;
+  width: 80%;
+}
+
+.edit-gig-info-location {
+  margin: 15px auto 0;
+}
+
+.edit-gig-info-venue {
+  margin: 20px auto 0;
+}
+
+.edit-gig-info-notes {
+  height: 40%;
+  margin: 20px auto 0;
+  text-align: left;
+}
+
+.edit-gig-info-save {
+  margin: 20px auto 10px;
+}
+
+
 /*Totals*/
 
 #totals {
@@ -158,6 +327,10 @@ input[type='text'] {
   margin: 0;
 }
 
+.totals-labels-print {
+  padding-right: 1vw;
+}
+
 .totals-card {
   background-color: rgba(200, 200, 200, 0.6);
   padding: 10px 0;
@@ -178,16 +351,24 @@ input[type='text'] {
   padding: 10px;
 }
 
+.totals-card-distance {
+  padding-left: 10px;
+}
+
 /*Notes*/
 
 #note-card {
-  background-color: rgba(240, 240, 240, 0.75);
+  /*background-color: rgba(240, 240, 240, 0.75);*/
   bottom: 100px;
-  height: 200px;
+  height: 23vh;
   margin: 0;
   position: absolute;
   right: 0;
   width: 50vw;
+}
+
+#notes-header {
+  display: flex;
 }
 
 .note-list {
@@ -198,13 +379,37 @@ input[type='text'] {
   height: 15px;
   margin: 0 auto;
   padding: 10px 0 15px 10px;
+  width: 50vw;
+}
+
+#notes-editor {
+  background-color: rgba(250, 250, 250, 0.8);
+  height: 16vh;
+  padding: 10px 10px;
+  width: 100%;
+}
+
+.notes-location-color {
+  color: #4285f4;
+}
+
+.note-button {
+  color: #FFFFFF;
+  background: rgba(78, 56, 46, 0.75);
+  border: 0;
+  font-size: 14px;
+  padding: 0 1vw;
+}
+
+.note-button:hover {
+  background: rgba(118, 96, 86, 0.75);
 }
 
 /*Map*/
 
 #map {
   background-color: rgba(240, 240, 240, 0.75);
-  height: 450px;
+  height: 60vh;
   margin-top: 0;
   position: absolute;
   right: 0;

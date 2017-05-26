@@ -21,6 +21,7 @@ export default class App extends Component {
   initialDispatcher(location, mpg) {
     this.setState({currentLocation: location})
     this.props.handleSetMPG(mpg)
+    this.props.initialLocation(location)
     this.nextScene('mainPage')
   }
 

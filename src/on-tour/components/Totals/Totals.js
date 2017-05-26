@@ -7,6 +7,12 @@ export default class Totals extends Component {
     super(props)
   }
 
+  distanceTotal(stuff) {
+    return parseInt(stuff.reduce((distanceAcc, gig) => {
+      return distanceAcc + gig.distance_from_last
+    }, 0), 10)
+  }
+
   render() {
     return (
       <div id="totals">
@@ -19,10 +25,10 @@ export default class Totals extends Component {
         </div>
         <div className="totals-card">
           <h6 className="totals-card-mpg total">{this.props.MPG}</h6>
-          <h6 className="totals-card-dates total">dates</h6>
-          <h6 className="totals-card-distance total">distance</h6>
+          <h6 className="totals-card-dates total">{this.props.Locations.length}</h6>
+          <h6 className="totals-card-distance total">{this.distanceTotal(this.props.Locations)} miles</h6>
           <h6 className="totals-card-cost total">cost</h6>
-          <h6 className="totals-card-print total"><img clasName = "print-icon" src="" /></h6>
+          <h6 className="totals-card-print total"><img className = "print-icon" src="" /></h6>
         </div>
       </div>
     )

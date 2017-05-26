@@ -13,3 +13,17 @@ export const addLocation = (location) => {
     location
   }
 }
+
+export const editGig = (gig) => {
+  return {
+    type: 'EDIT_GIG',
+    gig
+  }
+}
+
+export const selectGig = (gig) => {
+  return {
+    type: 'SELECT_GIG',
+    gig
+  }
+}

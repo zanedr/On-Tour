@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import GigList from './GigList';
+import { selectGig } from '../../actions/actions'
 
 function mapStateToProps(state) {
   return state
@@ -7,6 +8,9 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
+    selectGig: (gig) => {
+      dispatch(selectGig(gig))
+    }
   }
 }
 

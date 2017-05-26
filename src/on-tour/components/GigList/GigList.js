@@ -1,19 +1,48 @@
 import React, { Component } from 'react'
 import { HeaderCard } from '../Cards/HeaderCard'
 import { GigCard } from '../Cards/GigCard'
+import { AddGig } from '../Cards/AddGig'
+import NotesContainer from '../Notes/NotesContainer'
+import AddGigInfoContainer from '../AddGigInfo/AddGigInfoContainer'
+import EditGigInfoContainer from '../EditGigInfo/EditGigInfoContainer'
 
 export default class GigList extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      addGig: false,
+    }
+  }
+
+  selectGig(gig) {
+    this.props.selectGig(gig)
+  }
+
+  setAddGig() {
+    this.setState({addGig: true})
+  }
+
+  exitAddGig() {
+    this.setState({addGig: false})
+  }
+
+  addGigInfo() {
+    if(this.state.addGig) {
+      return (
+        <AddGigInfoContainer exit={this.exitAddGig.bind(this)}/>
+      )
+    }
   }
 
   render() {
     return (
       <div id="giglist">
         {HeaderCard(["Location", "Venue", "Distance from last", "Cost from last"])}
-        {fakeData.map((val, index) => {
-          return(<GigCard key={index} index={index + 1} {...val} />)
+        {this.props.Locations.map((val, index) => {
+          return(<GigCard editGig={this.selectGig.bind(this)} key={index} index={index} {...val} />)
         })}
+        <AddGig addLocation={this.setAddGig.bind(this)} />
+        {this.addGigInfo()}
       </div>
     )
   }
