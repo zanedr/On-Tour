@@ -96,6 +96,58 @@ input[type='text'] {
 
 }
 
+/*LocationAsk Card*/
+
+.ask-location-container {
+  border-radius: 8px;
+  color: #FFFFFF;
+  position: absolute;
+  padding-bottom: 20px;
+  bottom: 40vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  /*height: 20vh;*/
+  width: 30vw;
+  text-align: center;
+  background-color: rgba(100, 100, 100, 0.9);
+  z-index: 2;
+}
+
+.ask-location-text {
+  font-weight: 300;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.ask-location-exit {
+  border: none;
+  border-radius: 50%;
+  position: absolute;
+  right: 0;
+  vertical-align: top;
+}
+
+.ask-location-radio {
+  margin: 13px 0;
+  width: 15px;
+}
+
+.ask-location-option {
+  margin: 0 auto;
+  width: 60%;
+  font-size: 12px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.ask-location-option-text {
+  margin: 0 auto 10px;
+  font-size: 12px;
+  text-align: center;
+  width: 80%;
+}
+
+
 /*HeaderCard*/
 .header-card {
   background-color: rgba(50, 50, 50, 0.6);
@@ -110,8 +162,7 @@ input[type='text'] {
   color: #FFFFFF;
   font-weight: 300;
   margin: 0 auto;
-  padding: 15px 15px 5px 0px;
-  /*width: 150px;*/
+  padding: 15px 1vw 5px 3vw;
 }
 
 /*GigList*/
@@ -120,6 +171,10 @@ input[type='text'] {
 }
 
 /*GigCard*/
+
+.gig-card-overview {
+  display: inline-block;
+}
 
 .gig-card {
   background-color: rgba(200, 200, 200, 0.6);
@@ -143,7 +198,7 @@ input[type='text'] {
   padding: 15px 5px 10px;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 110px;
+  width: 9vw;
 }
 
 .gig-card-number {
@@ -156,8 +211,77 @@ input[type='text'] {
   width: 40px;
 }
 
-/*AddGig*/
+.gig-card-delete {
+  background-color: rgba(78, 56, 45, 1);
+  color: #FFFFFF;
+  float: right;
+  margin-top: -50px;
+  height: 50px;
+  width: 1vw;
+  z-index: 3;
+  transition-duration: 0.2s;
+}
 
+.gig-card-delete:hover {
+  background-color: rgba(78, 56, 45, 0.75);
+  padding-left: 1vw;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  transition-duration: 0.2s;
+}
+
+.gig-card-delete-text {
+  margin: 0 auto;
+  width: 5px;
+  word-wrap: break-word;
+  line-height: 8px;
+  font-size: 8px;
+  font-weight: 300;
+}
+
+/*GigCard ask to delete*/
+.gig-card-ask-delete {
+  background-color: rgba(100, 100, 100, 0.9);
+  border-radius: 10px;
+  height: 180px;
+  left: 50%;
+  padding: 0 10px;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  z-index: 3;
+}
+
+.gig-card-ask-delete-text {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 300;
+  color: #FFFFFF;
+  margin: 40px auto 20px;
+}
+
+.gig-card-ask-delete-buttons {
+  color: #FFFFFF;
+  display: flex;
+  justify-content: space-around;
+  margin: 0 20px;
+}
+
+.gig-delete-actual-buttons {
+  color: #FFFFFF;
+  background-color: rgba(50, 50, 50, 0.6);
+  border: 0;
+  font-size: 14px;
+  padding: 0 1vw;
+}
+
+.gig-delete-actual-buttons:hover {
+  color: #333333;
+  background-color: rgba(250, 250, 250, 0.6);
+}
+
+/*AddGig button*/
 #add-gig-container {
   background-color: rgba(50, 50, 50, 0.6);
   border-bottom-right-radius: 15px;
@@ -170,7 +294,7 @@ input[type='text'] {
 }
 
 #add-gig-container:hover {
-  background-color: rgba(100, 100, 100, 0.6)
+  background-color: rgba(100, 100, 100, 0.6);
 }
 
 .add-gig {
@@ -180,7 +304,7 @@ input[type='text'] {
   font-weight: 300;
 }
 
-/*Pop up AddGigInfo*/
+/*Pop-up AddGigInfo*/
 .add-gig-info {
   text-align: center;
   border-radius: 8px;
@@ -213,6 +337,8 @@ input[type='text'] {
 .add-gig-info-title {
   color: #FFFFFF;
   margin: 15px auto 0;
+  font-weight: 300;
+  font-size: 24px;
 }
 
 .add-gig-info-input {
@@ -245,7 +371,7 @@ input[type='text'] {
   text-align: center;
   border-radius: 8px;
   position: absolute;
-  top: 0;
+  top: -11vh;
   left: 0;
   transform: translate(-50%, -50%);
   height: 48vh;
@@ -272,6 +398,8 @@ input[type='text'] {
 
 .edit-gig-info-title {
   color: #FFFFFF;
+  font-size: 24px;
+  font-weight: 300;
   margin: 15px auto 0;
 }
 
@@ -280,6 +408,27 @@ input[type='text'] {
   margin: 5px;
   text-align: center;
   width: 80%;
+}
+
+.edit-gig-info-order-container {
+  padding: 0  10%;
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.edit-gig-info-order-text {
+  color: #FFFFFF;
+  height: 12px;
+  margin: 23px 10px 0 10px;
+  padding-left: 30px;
+}
+
+.edit-gig-info-order {
+  height: 10px;
+  margin-top: 20px;
+  margin-bottom: 0;
+  width: 30%;
 }
 
 .edit-gig-info-location {
@@ -316,14 +465,15 @@ input[type='text'] {
   padding: 5px 0;
   display: flex;
   margin: 0;
-  justify-content: space-around;
   vertical-align: middle;
   width: 50vw;
 }
 
 .total-label {
+  text-align: center;
   font-size: 14px;
   font-weight: 300;
+  width: 10vw;
   margin: 0;
 }
 
@@ -333,26 +483,72 @@ input[type='text'] {
 
 .totals-card {
   background-color: rgba(200, 200, 200, 0.6);
-  padding: 10px 0;
   display: flex;
-  justify-content: space-around;
+  /*justify-content: space-between;*/
   vertical-align: middle;
   width: 50vw;
 }
 
 .total {
-  font-size: 16px;
+  padding: 10px 3vw;
+  font-size: 14px;
   font-weight: 300;
+  width: 10vw;
   margin: 0;
+}
+
+.totals-card-mpg:hover {
+  background-color: rgba(78, 56, 46, 0.75);
+  color: #FFFFFF;
 }
 
 .totals-card-print {
   background-color: rgba(78, 56, 46, 0.75);
-  padding: 10px;
 }
 
 .totals-card-distance {
   padding-left: 10px;
+}
+
+.totals-card-cost-blank {
+  font-size: 10px;
+  margin: 0;
+  padding: 0;
+  width: 40px;
+}
+
+.totals-card-cost {
+  font-weight: 300;
+  background-color: rgba(200, 200, 200, 0.6);
+  overflow: scroll;
+}
+
+.totals-card-cost:hover {
+  background-color: rgba(78, 56, 46, 0.75);
+  color: #FFFFFF;
+}
+
+/*Change MPG card*/
+
+.mpg-edit-container {
+  border-radius: 8px;
+  color: #FFFFFF;
+  position: absolute;
+  padding-bottom: 20px;
+  bottom: 40vh;
+  left: 0;
+  transform: translate(-50%, -50%);
+  height: 20vh;
+  width: 20vw;
+  text-align: center;
+  background-color: rgba(100, 100, 100, 0.9);
+  z-index: 2;
+}
+
+.mpg-edit-text {
+  font-weight: 300;
+  font-size: 16px;
+  margin-bottom: 15px;
 }
 
 /*Notes*/
@@ -385,8 +581,8 @@ input[type='text'] {
 #notes-editor {
   background-color: rgba(250, 250, 250, 0.8);
   height: 16vh;
-  padding: 10px 10px;
-  width: 100%;
+  padding: 10px 1vw;
+  width: 48vw;
 }
 
 .notes-location-color {
@@ -415,4 +611,19 @@ input[type='text'] {
   right: 0;
   top: 0;
   width: 50vw;
+}
+
+.containerElement {
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #032459;
+}
+
+.mapElement {
+  height: 100%;
+  width: 100%;
 }

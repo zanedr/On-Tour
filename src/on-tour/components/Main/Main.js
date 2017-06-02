@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import GigListContainer from '../GigList/GigListContainer'
 import TotalsContainer from '../Totals/TotalsContainer'
-import MapContainer from '../Map/MapContainer'
+import MapHolderContainer from '../MapHolder/MapHolderContainer'
 import NotesContainer from '../Notes/NotesContainer'
 
 export default class Main extends Component {
@@ -16,7 +16,7 @@ export default class Main extends Component {
           <GigListContainer />
         </div>
         <div id = "main-right">
-          <MapContainer />
+          <MapHolderContainer />
           <NotesContainer />
           <TotalsContainer />
         </div>

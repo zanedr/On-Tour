@@ -17,7 +17,7 @@ export default class Notes extends Component {
     }
   }
 
-  exitEditGig(notes) {
+  exitEditGig() {
     this.setState({editGig: false})
   }
 
@@ -36,9 +36,9 @@ export default class Notes extends Component {
   }
 
   gigNotes() {
-    return (
-      <div>{this.props.gig.notes}</div>
-    )
+      return (
+        <div>{this.props.gig.notes}</div>
+      )
   }
 
   render() {

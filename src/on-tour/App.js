@@ -3,9 +3,9 @@ import logo from '../logo.svg';
 import './App.css';
 import MainContainer from './components/Main/MainContainer'
 import { TitleScreen } from './components/Cards/TitleScreen'
-import { InitialInfo } from './components/Cards/InitialInfo'
+import InitialInfoContainer from './components/Cards/InitialInfoContainer'
 
-export default class App extends Component {
+export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -30,7 +30,9 @@ export default class App extends Component {
       return TitleScreen(this.nextScene.bind(this))
     }
     else if (this.state.scene === 'initialInfo') {
-      return InitialInfo(this.initialDispatcher.bind(this))
+      return (
+        <InitialInfoContainer />
+      )
     }
   }
 
@@ -42,7 +44,9 @@ export default class App extends Component {
     } else if (this.state.scene === 'titleScreen') {
       return TitleScreen(this.nextScene.bind(this))
     } else if (this.state.scene === 'initialInfo') {
-      return InitialInfo(this.initialDispatcher.bind(this))
+      return (
+        <InitialInfoContainer dispatcher={this.initialDispatcher.bind(this)}/>
+      )
     }
   }
 }
