@@ -19,7 +19,7 @@ export default class InitialInfo extends Component {
                           order: 1,
                           location: located,
                           venue: "Home",
-                          distance_from_last: "",
+                          distance_from_last: "0",
                           cost_from_last: "",
                           notes: ""}, this.state.mpg)
   }

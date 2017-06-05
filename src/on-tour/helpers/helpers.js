@@ -37,6 +37,7 @@ export const axiosInfo = {headers:{"Content-Type": "application/json; charset=UT
                           mode: "cors"}
 //
 export const fetchInfo = {method: "get",
+                          status: "200",
                           headers: {"Access-Control-Allow-Origin":"*"}}
 
 // export const locationDistances = (locations) => {

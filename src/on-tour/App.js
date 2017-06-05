@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import logo from '../logo.svg';
+import React from 'react';
 import './App.css';
 import MainContainer from './components/Main/MainContainer'
 import { TitleScreen } from './components/Cards/TitleScreen'

@@ -1,4 +1,4 @@
-import thunk from 'redux-thunk'
+// import thunk from 'redux-thunk'
 
 export const handleSetMPG = (mpg)  =>  {
   return {
@@ -11,6 +11,13 @@ export const addLocation = (location) => {
   return {
     type: 'ADD_LOCATION',
     location
+  }
+}
+
+export const handleSetCheck = (check) => {
+  return {
+    type: 'SET_LOCATION_CHECK',
+    check
   }
 }
 

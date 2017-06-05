@@ -27,7 +27,7 @@ export default class AddGigInfo extends Component {
                 order: this.props.Locations.length + 1,
                 location: located,
                 venue: this.state.venue,
-                distance_from_last: "",
+                distance_from_last: "0",
                 cost_from_last: "",
                 notes: this.state.notes}
     this.props.handleAddLocation(card)
