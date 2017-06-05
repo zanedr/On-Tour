@@ -279,6 +279,7 @@ input[type='text'] {
 #add-gig-container {
   background-color: rgba(50, 50, 50, 0.6);
   border-bottom-right-radius: 15px;
+  /*border-top: 1px rgba(50, 50, 50, 0.6) solid;*/
   border-bottom: 1px rgba(200, 200, 200, 0.6) solid;
   border-right: 1px rgba(200, 200, 200, 0.6) solid;
   color: #FFFFFF;
@@ -288,7 +289,8 @@ input[type='text'] {
 }
 
 #add-gig-container:hover {
-  background-color: rgba(100, 100, 100, 0.6);
+  color: #000000;
+  background-color: rgba(200, 200, 200, 0.9);
 }
 
 .add-gig {
@@ -604,7 +606,7 @@ input[type='text'] {
 }
 
 .note-list {
-  background-color: rgba(78, 56, 46, 0.75);
+  background-color: rgba(78, 56, 46, 0.9);
   color: #FFFFFF;
   font-size: 16px;
   font-weight: 300;
@@ -627,14 +629,14 @@ input[type='text'] {
 
 .note-button {
   color: #FFFFFF;
-  background: rgba(78, 56, 46, 0.75);
+  background: rgba(78, 56, 46, 0.9);
   border: 0;
   font-size: 14px;
   padding: 0 1vw;
 }
 
 .note-button:hover {
-  background: rgba(118, 96, 86, 0.75);
+  background: rgba(118, 96, 86, 0.9);
 }
 
 /*Map*/
