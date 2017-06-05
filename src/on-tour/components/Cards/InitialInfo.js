@@ -6,7 +6,7 @@ export default class InitialInfo extends Component {
     super(props)
     const { dispatcher } = props
     this.state = {
-      mpg: '',
+      mpg: '0',
       possibleLocation: {},
       location: '',
       error: '',

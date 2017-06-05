@@ -56,7 +56,6 @@ export const setGasPrices = (gas) => {
   }
 }
 
-
 export const gasPrices = () => {
   return (dispatch) => {
     fetch('http://api.eia.gov/series/?api_key=a9b717b70e6b150a26e37aaded30b914&series_id=PET.EMM_EPMRU_PTE_NUS_DPG.W')

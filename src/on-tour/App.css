@@ -169,7 +169,8 @@ input[type='text'] {
 }
 
 .gig-card {
-  background-color: rgba(200, 200, 200, 0.6);
+  color: #000000;
+  background-color: rgba(200, 200, 200, 0.9);
   display: flex;
   height: 50px;
   justify-content: space-around;
@@ -178,11 +179,12 @@ input[type='text'] {
 }
 
 .gig-card:hover {
-  background-color: rgba(100, 100, 100, 0.6);
+  color: #FFFFFF;
+  background-color: rgba(50, 50, 50, 0.6);
 }
 
 .gig-card-text {
-  color: #FFFFFF;
+  /*color: #000000;*/
   font-weight: 300;
   margin: 0;
   overflow: hidden;
@@ -194,7 +196,7 @@ input[type='text'] {
 }
 
 .gig-card-number {
-  color: #FFFFFF;
+  /*color: #000000;*/
   font-weight: 300;
   margin: 0;
   overflow: hidden;
@@ -445,7 +447,6 @@ input[type='text'] {
 /*Totals*/
 
 #totals {
-  color: #FFFFFF;
   font-weight: 300;
   position: absolute;
   bottom: 0;
@@ -453,6 +454,7 @@ input[type='text'] {
 }
 
 .totals-labels {
+  color: #FFFFFF;
   background-color: rgba(78, 56, 46, 0.75);
   padding: 5px 0;
   display: flex;
@@ -474,7 +476,7 @@ input[type='text'] {
 }
 
 .totals-card {
-  background-color: rgba(200, 200, 200, 0.6);
+  background-color: rgba(200, 200, 200, 0.9);
   display: flex;
   /*justify-content: space-between;*/
   vertical-align: middle;
@@ -482,11 +484,16 @@ input[type='text'] {
 }
 
 .total {
+  color: #000000;
   padding: 10px 3vw;
   font-size: 14px;
   font-weight: 300;
   width: 10vw;
   margin: 0;
+}
+
+.totals-card-mpg {
+  padding-left: 4vw;
 }
 
 .totals-card-mpg:hover {
@@ -511,15 +518,15 @@ input[type='text'] {
 }
 
 #totals-calculate-again {
-  background-color: rgba(200, 200, 200, 0.6);
+  background-color: rgba(78, 56, 46, 0.75);
   bottom: 0;
-  border-left: 2px solid rgba(78, 56, 46, 0.75);
-  border-top: 2px solid rgba(78, 56, 46, 0.75);
+  /*border-left: 2px solid rgba(78, 56, 46, 0.9);
+  border-top: 2px solid rgba(78, 56, 46, 0.9);*/
   border-top-left-radius: 10px;
   color: #FFFFFF;
   font-size: 16px;
   font-weight: 300;
-  height: 55px;
+  height: 58px;
   /*margin-top: 10px;*/
   padding-top: 7px;
   overflow: scroll;
@@ -530,8 +537,8 @@ input[type='text'] {
 }
 
 #totals-calculate-again:hover {
-  background-color: rgba(78, 56, 46, 0.75);
-  color: #FFFFFF;
+  background-color: rgba(200, 200, 200, 0.9);
+  color: #333333;
 }
 
 #totals-calculate {
