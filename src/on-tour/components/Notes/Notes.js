@@ -37,7 +37,7 @@ export default class Notes extends Component {
 
   gigNotes() {
       return (
-        <div>{this.props.gig.notes}</div>
+        <div className="gig-notes">{this.props.gig.notes}</div>
       )
   }
 

@@ -30,6 +30,7 @@ export default class InitialInfo extends Component {
     .then(answer => answer.json())
     .then((res) => {
       this.setState({possibleLocation: res})
+      console.log('res', res);
     })
   }
 
@@ -60,7 +61,7 @@ export default class InitialInfo extends Component {
     } else {
       return (
         <div className="ask-location-container">
-          <button className="ask-location-exit" onClick={() => {this.setState({askLocationPopUp: false})}}>&times;</button>
+          <button className="ask-location-exit" onClick={() => {this.setState({askLocationPopUp: false})}}>Back</button>
           <h6 className="ask-location-text">Confirm Location</h6>
           <p className='ask-location-option-text'>{this.state.possibleLocation.results[0].formatted_address}</p>
           <input className="ask-location-submit"

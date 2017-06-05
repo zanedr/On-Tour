@@ -109,8 +109,13 @@ input[type='text'] {
   /*height: 20vh;*/
   width: 30vw;
   text-align: center;
-  background-color: rgba(100, 100, 100, 0.9);
+  background-color: rgba(50, 50, 50, 0.8);
   z-index: 2;
+}
+
+.ask-location-edit-gig {
+  left: 0;
+  bottom: 20vh;
 }
 
 .ask-location-text {
@@ -121,23 +126,10 @@ input[type='text'] {
 
 .ask-location-exit {
   border: none;
-  border-radius: 50%;
+  border-radius: 10px;
   position: absolute;
   right: 0;
   vertical-align: top;
-}
-
-.ask-location-radio {
-  margin: 13px 0;
-  width: 15px;
-}
-
-.ask-location-option {
-  margin: 0 auto;
-  width: 60%;
-  font-size: 12px;
-  display: flex;
-  justify-content: space-around;
 }
 
 .ask-location-option-text {
@@ -508,6 +500,7 @@ input[type='text'] {
 
 .totals-card-distance {
   padding-left: 10px;
+  font-size: 12px;
 }
 
 .totals-card-cost-blank {
@@ -517,13 +510,24 @@ input[type='text'] {
   width: 40px;
 }
 
-.totals-card-cost {
+#totals-calculate {
+  background-color: rgba(200, 200, 200, 0.8);
+  bottom: 0;
+  border: 2px solid rgba(78, 56, 46, 0.75);
+  border-top-left-radius: 10px;
+  color: #FFFFFF;
+  font-size: 14px;
   font-weight: 300;
-  background-color: rgba(200, 200, 200, 0.6);
+  height: 27px;
+  padding-top: 7px;
   overflow: scroll;
+  position: absolute;
+  right: 50vw;
+  text-align: center;
+  width: 120px;
 }
 
-.totals-card-cost:hover {
+#totals-calculate:hover {
   background-color: rgba(78, 56, 46, 0.75);
   color: #FFFFFF;
 }

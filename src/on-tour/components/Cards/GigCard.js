@@ -17,10 +17,10 @@ export const GigCard = (info) => {
     <div className="gig-card-overview">
       <div className="gig-card" onClick={() => editGig(gig)}>
         <h5 className="gig-card-number">{order}.</h5>
-        <h5 className="gig-card-text">{location}</h5>
-        <h5 className="gig-card-text">{venue}</h5>
-        <h5 className="gig-card-text">{distance_from_last} miles</h5>
-        <h5 className="gig-card-text">{cost_from_last}</h5>
+        <h5 className="gig-card-text gig-card-location">{location}</h5>
+        <h5 className="gig-card-text gig-card-venue">{venue}</h5>
+        <h5 className="gig-card-text gig-card-distance">{distance_from_last} miles</h5>
+        <h5 className="gig-card-text gig-card-cost">${cost_from_last}</h5>
       </div>
       <section className="gig-card-delete" onClick={() => deleteGig(gig)}>
         <h6 className="gig-card-delete-text">Delete</h6>

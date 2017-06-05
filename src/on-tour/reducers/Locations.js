@@ -30,6 +30,7 @@ const Locations = (state = [], action) => {
       let updatedGigs = state.filter((singleGig, gigIndex) => {
         if(action.gig.index !== singleGig.index) {
           singleGig.index = reorderDeleteGig
+          singleGig.order = reorderDeleteGig + 1
           reorderDeleteGig++
           return singleGig
         }
