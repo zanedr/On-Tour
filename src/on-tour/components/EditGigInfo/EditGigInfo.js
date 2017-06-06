@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { fetchHelper } from '../../helpers/helpers'
 
 export default class EditGigInfo extends Component {
   constructor(props) {
@@ -16,11 +17,14 @@ export default class EditGigInfo extends Component {
   editGig(located) {
     let gig = {index: this.props.SelectedGig.index,
                 order: this.state.order,
-                location: located,
+                location: located.formatted_address,
                 venue: this.state.venue,
                 distance_from_last: this.props.SelectedGig.distance_from_last,
                 cost_from_last: this.props.SelectedGig.cost_from_last,
+                lat: located.geometry.location.lat,
+                lng: located.geometry.location.lng,
                 notes: this.state.notes}
+                console.log('GIGIG', gig);
     this.props.handleEditGig(gig)
     this.props.handleSelectGig(gig)
     this.props.exit()
@@ -32,8 +36,7 @@ export default class EditGigInfo extends Component {
     }
     else {
       this.state.askLocationPopUp = true
-      fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.state.location}&key=AIzaSyDs3ljSEnfR3nRHOw9bHYwa9XPUjzaFnh0`)
-      .then(answer => answer.json())
+      fetchHelper(this.state.location)
       .then((res) => {
         this.setState({possibleLocation: res})
       })
@@ -66,7 +69,7 @@ export default class EditGigInfo extends Component {
           <input className="ask-location-submit"
             value="That's the one!"
             type="submit"
-            onClick={() => this.editGig(this.state.possibleLocation.results[0].formatted_address)} />
+            onClick={() => this.editGig(this.state.possibleLocation.results[0])} />
         </div>
       )
     }

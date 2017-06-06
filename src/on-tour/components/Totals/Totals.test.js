@@ -9,7 +9,16 @@ import sinon from 'sinon'
 
 describe('totals testing', () => {
 
-let mockStore = configureStore()({Locations: [],
+let locations = [{location: 'Mt. Doom, CO',
+                                            venue: 'Big Ernie\'s Pizza',
+                                            index: 5,
+                                            order: 6,
+                                            notes: 'yup, thats a note',
+                                            distance_from_last: '20 miles',
+                                            cost_from_last: '$1.00'}]
+
+let mockStore = configureStore()({Locations: locations,
+                                   Check: locations,
                                    GasPrices: 2.00,
                                    MPG: 20,
                                    SelectedGig:{location: 'Mt. Doom, CO',
@@ -32,6 +41,7 @@ let mockStore = configureStore()({Locations: [],
 
   it('totals should have section for mpg, label and value', () => {
     const { Container, Component } = setup()
+    console.log('COMPONENT', Component.debug());
 
     const mpglabel = Component.find('.totals-labels-mpg')
     const mpg = Component.find('.totals-card-mpg')

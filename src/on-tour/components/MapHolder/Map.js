@@ -1,27 +1,88 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
 
 
-const Map = withGoogleMap((props) => {
+class Map extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      map: null,
+    }
+  }
 
-  let mapCenter = { lat: 40 , lng: -97 }
-  let zoomIndex = 4
-  const gigLocations = props.Locations.map((location, index) => {
-    return location.location
-  })
-  console.log('GOOGLEMAPSTUFF', gigLocations);
+  mapLoaded(map) {
+    if(this.state.map != null) {
+      console.log('mapLoaded', JSON.stringify(map.getCenter()));
+      return this.setState({map: map})
+    }
+  }
 
-  return (
-    <div id='map-container'>
-    <GoogleMap
-      zoom={zoomIndex}
-      center={mapCenter}>
-    </GoogleMap>
-  </div>
-  )
-})
+  render() {
+    const markers = this.props.markers || []
 
-export default Map
+    return (
+      <GoogleMap
+        ref = {this.mapLoaded.bind(this)}
+        defaultZoom={4}
+        defaultCenter={{ lat: 35.2226, lng: -97.4395 }}>
+        
+        {markers.map((marker, index) => (
+           <Marker {...marker} />
+          )
+        )}
+
+      </GoogleMap>
+    )
+  }
+}
+
+export default withGoogleMap(Map)
+
+// withGoogleMap((props)
+// console.log('MAPMAPMAP', props);
+// let mapCenter = { lat: 40 , lng: -97 }
+// let zoomIndex = 4
+//
+// let origin1 =  props.Location.location
+// let destinationA = 'Houston, TX'
+//
+//
+// return (
+//  <div id='map-container'>
+//    <GoogleMap
+//      ref={props.onMapLoad}
+//      defaultZoom={zoomIndex}
+//      defaultCenter={mapCenter}>
+//    {markerMaker(props.Locations)}
+//    </GoogleMap>
+//  </div>
+// )
+// })
+//
+// const markerMaker = (gigLocations) => {
+// if(gigLocations > 0) {
+//  return gigLocations.map((location, index) => {
+//    return (
+//      <Marker position = {location.location} />
+//    )})
+// }
+// }
+// var service = new google.maps.DistanceMatrixService;
+//       service.getDistanceMatrix({
+//         origins: [origin1],
+//         destinations: [destinationA],
+//         travelMode: 'DRIVING',
+//         unitSystem: google.maps.UnitSystem.IMPERIAL,
+//         avoidHighways: false,
+//         avoidTolls: false
+//       }, function(response, status) {
+//         if (status !== 'OK') {
+//           alert('Error was: ' + status);
+//         } else {
+//           var originList = response.originAddresses;
+//           var destinationList = response.destinationAddresses;
+//           console.log(originList, destinationList);
+//         }})
 
 // if( searchResults.length !== 0){
 //   const sortedSearch = searchResults.sort( (venueA, venueB) => {

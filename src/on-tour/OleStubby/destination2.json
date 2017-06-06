@@ -1,0 +1,26 @@
+{
+destination_addresses: [
+"Portland, OR, USA"
+],
+origin_addresses: [
+"Los Angeles, CA, USA"
+],
+rows: [
+{
+elements: [
+{
+distance: {
+text: "963 mi",
+value: 1549343
+},
+duration: {
+text: "14 hours 34 mins",
+value: 52458
+},
+status: "OK"
+}
+]
+}
+],
+status: "OK"
+}

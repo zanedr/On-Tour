@@ -37,6 +37,9 @@ const Locations = (state = [], action) => {
       })
       return updatedGigs
 
+    case 'UPDATE_GIG_LIST':
+      return action.updatedGigs
+
     default:
       return state
     }

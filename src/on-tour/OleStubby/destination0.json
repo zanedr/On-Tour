@@ -1,0 +1,26 @@
+{
+  destination_addresses: [
+    "San Francisco, CA, USA"
+      ],
+      origin_addresses: [
+        "Denver, CO, USA"
+        ],
+        rows: [
+          {
+          elements: [
+          {
+          distance: {
+          text: "1,254 mi",
+          value: 2018513
+          },
+          duration: {
+          text: "18 hours 36 mins",
+          value: 66951
+          },
+        status: "OK"
+        }
+      ]
+    }
+  ],
+  status: "OK"
+}

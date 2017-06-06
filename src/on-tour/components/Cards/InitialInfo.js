@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-// import { AskLocation } from '../AskLocation/AskLocation'
+import { fetchHelper } from '../../helpers/helpers'
 
 export default class InitialInfo extends Component {
   constructor(props){
     super(props)
-    const { dispatcher } = props
     this.state = {
       mpg: '0',
       possibleLocation: {},
@@ -17,17 +16,18 @@ export default class InitialInfo extends Component {
   submitLocation(located) {
     this.props.dispatcher({index: 0,
                           order: 1,
-                          location: located,
+                          location: located.formatted_address,
                           venue: "Home",
                           distance_from_last: "0",
                           cost_from_last: "",
+                          lat: located.geometry.location.lat,
+                          lng: located.geometry.location.lng,
                           notes: ""}, this.state.mpg)
   }
 
   queryLocation() {
     this.state.askLocationPopUp = true
-    fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.state.location}&key=AIzaSyDs3ljSEnfR3nRHOw9bHYwa9XPUjzaFnh0`)
-    .then(answer => answer.json())
+    fetchHelper(this.state.location)
     .then((res) => {
       this.setState({possibleLocation: res})
       console.log('res', res);
@@ -47,7 +47,7 @@ export default class InitialInfo extends Component {
           <input className="intial-inputs"
                  onChange={(e) => {this.setState({mpg: e.target.value})}}
                  placeholder="MPG" type="text" />
-          <p className='initial-p'>If MPG is left blank calculations will not work. Make a guess. You can always update it later.</p>
+               <p className='initial-p'>If MPG is left blank calculations will display infinity. Make a guess. You can always update it later.</p>
           <p className='initial-p initial-p-link'>
             <a className="initial-p-link"
                 href="https://www.fueleconomy.gov/feg/findacar.shtml"
@@ -67,7 +67,7 @@ export default class InitialInfo extends Component {
           <input className="ask-location-submit"
             value="That's the one!"
             type="submit"
-            onClick={() => this.submitLocation(this.state.possibleLocation.results[0].formatted_address)} />
+            onClick={() => this.submitLocation(this.state.possibleLocation.results[0])} />
         </div>
       )
     }

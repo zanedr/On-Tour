@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { fetchHelper } from '../../helpers/helpers'
 
 export default class AddGigInfo extends Component {
   constructor(props) {
@@ -15,8 +16,7 @@ export default class AddGigInfo extends Component {
 
   queryLocation() {
     this.state.askLocationPopUp = true
-    fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.state.location}&key=AIzaSyDs3ljSEnfR3nRHOw9bHYwa9XPUjzaFnh0`)
-    .then(answer => answer.json())
+    fetchHelper(this.state.location)
     .then((res) => {
       this.setState({possibleLocation: res})
     })
@@ -25,10 +25,12 @@ export default class AddGigInfo extends Component {
   addGig(located) {
     let card = {index: this.props.Locations.length,
                 order: this.props.Locations.length + 1,
-                location: located,
+                location: located.formatted_address,
                 venue: this.state.venue,
                 distance_from_last: "0",
                 cost_from_last: "",
+                lat: located.geometry.location.lat,
+                lng: located.geometry.location.lng,
                 notes: this.state.notes}
     this.props.handleAddLocation(card)
     this.props.exit()
@@ -67,7 +69,7 @@ export default class AddGigInfo extends Component {
           <input className="ask-location-submit"
             value="That's the one!"
             type="submit"
-            onClick={() => this.addGig(this.state.possibleLocation.results[0].formatted_address)} />
+            onClick={() => this.addGig(this.state.possibleLocation.results[0])} />
         </div>
       )
     }

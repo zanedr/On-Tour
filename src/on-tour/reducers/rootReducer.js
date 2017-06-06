@@ -8,9 +8,9 @@ import Check from './Check'
 
 const rootReducer = combineReducers({
   AppReducer,
+  Check,
   Locations,
   MPG,
-  Check,
   GasPrices,
   SelectedGig,
 })

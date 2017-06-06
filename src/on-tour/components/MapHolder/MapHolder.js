@@ -8,15 +8,15 @@ export default class MapHolder extends Component {
   }
 
   render() {
+
     return (
-    <div id='map'>
-      <MapContainer
-      mapElement={ <div className='mapElement' /> }
-      containerElement={ <div className='containerElement'/> }
-      
-      />
-    </div>
-  )
+      <div id='map'>
+        <MapContainer
+          mapElement={ <div className='mapElement' /> }
+          containerElement={ <div className='containerElement'/> }
+        />
+      </div>
+    )
   }
 }
 

@@ -544,25 +544,26 @@ input[type='text'] {
 }
 
 #totals-calculate {
-  background-color: rgba(200, 200, 200, 0.8);
+  background-color: rgba(200, 200, 200, 1);
   bottom: 0;
-  border: 2px solid rgba(78, 56, 46, 0.75);
-  border-top-left-radius: 10px;
-  color: #FFFFFF;
+  /*border: 2px solid rgba(78, 56, 46, 0.75);*/
+  /*border-top-left-radius: 10px;*/
+  color: #000000;
   font-size: 24px;
   font-weight: 300;
   height: 50px;
   /*margin-top: 10px;*/
-  padding-top: 7px;
+  padding-top: 15px;
   overflow: scroll;
   position: absolute;
   right: 0;
   text-align: center;
   width: 50vw;
+  z-index: 2;
 }
 
 #totals-calculate:hover {
-  background-color: rgba(78, 56, 46, 0.75);
+  background-color: rgba(78, 56, 46, 1);
   color: #FFFFFF;
 }
 

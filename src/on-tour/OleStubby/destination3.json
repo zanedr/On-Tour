@@ -1,0 +1,26 @@
+{
+destination_addresses: [
+"New York, NY, USA"
+],
+origin_addresses: [
+"Portland, OR, USA"
+],
+rows: [
+{
+elements: [
+{
+distance: {
+text: "2,897 mi",
+value: 4661625
+},
+duration: {
+text: "1 day 19 hours",
+value: 153284
+},
+status: "OK"
+}
+]
+}
+],
+status: "OK"
+}

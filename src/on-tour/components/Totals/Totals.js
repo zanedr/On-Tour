@@ -46,18 +46,24 @@ export default class Totals extends Component {
   }
 
   distanceTotal() {
-    // locationDistances(this.props.Locations)
-    let currentGigs = this.props.Locations
-    let totalMiles = parseInt(currentGigs.reduce((distanceAcc, gig) => {
-      return distanceAcc + gig.distance_from_last
+    let updatedLocations = locationDistances(this.props.Locations)
+    console.log(updatedLocations);
+    this.props.handleUpdateGigList(updatedLocations)
+    let totalMiles = parseInt(updatedLocations.reduce((distanceAcc, gig) => {
+      return distanceAcc + parseInt(gig.distance_from_last)
     }, 0), 10)
     this.setState({totalMiles: totalMiles})
-    this.props.handleSetCheck(this.props.Locations)
-    this.calculateTotalCost()
+    this.resetCheckProps(updatedLocations)
+    this.calculateTotalCost(totalMiles)
   }
 
-  calculateTotalCost() {
-    this.setState({totalCost: (this.state.totalMiles / this.props.MPG * this.props.GasPrices)})
+  resetCheckProps(currentGigs) {
+    this.props.handleSetCheck(currentGigs)
+  }
+
+  calculateTotalCost(totalMiles) {
+    const gas = (totalMiles / this.props.MPG * this.props.GasPrices).toFixed(2)
+    this.setState({totalCost: gas})
   }
 
   render() {
