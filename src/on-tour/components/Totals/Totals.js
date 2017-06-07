@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { HeaderCard } from '../Cards/HeaderCard'
 import { GigCard } from '../Cards/GigCard'
-import { locationDistances } from '../../helpers/helpers'
+import { gasFetch, adjustDistance } from '../../helpers/helpers'
 
 export default class Totals extends Component {
   constructor(props) {
@@ -11,6 +11,8 @@ export default class Totals extends Component {
       mpg: '',
       totalMiles: 0,
       totalCost: 0,
+      check: false,
+      updatedLocations: {}
     }
   }
 
@@ -45,45 +47,97 @@ export default class Totals extends Component {
     }
   }
 
-  distanceTotal() {
-    let updatedLocations = locationDistances(this.props.Locations)
-    console.log(updatedLocations);
-    this.props.handleUpdateGigList(updatedLocations)
-    let totalMiles = parseInt(updatedLocations.reduce((distanceAcc, gig) => {
-      return distanceAcc + parseInt(gig.distance_from_last)
-    }, 0), 10)
-    this.setState({totalMiles: totalMiles})
-    this.resetCheckProps(updatedLocations)
-    this.calculateTotalCost(totalMiles)
+  updateLocations() {
+    const { Locations } = this.props
+    const distanceMap = Locations.map((location, index) => {
+      if(Locations[index+1]) {
+        return adjustDistance(location.location, Locations[index+1].location)
+      }
+    })
+    Promise.all(distanceMap).then(distances => {
+        this.props.handleUpdateGigList(this.updateLocationMap(distances))
+        this.props.handleSetCheck(true)
+        this.setState({totalMiles: this.totalMiles(this.updateLocationMap(distances)),
+                       totalCost: this.calculateTotalCost(this.updateLocationMap(distances)),
+                       check: true})
+    })
   }
 
-  resetCheckProps(currentGigs) {
-    this.props.handleSetCheck(currentGigs)
+  updateLocationMap(distances) {
+    const { Locations } = this.props
+    return Locations.map((updateLocation, i) => {
+      if(i === 0) {
+        updateLocation.distance_from_last = 0
+        updateLocation.cost_from_last = 0
+        return updateLocation
+      }
+      else if(Locations[i - 1] && updateLocation)  {
+        updateLocation.distance_from_last = parseInt(distances[i - 1]).toFixed(2)
+        console.log('UPDATES: DISTANCE', distances[i-1], 'MPG', this.props.MPG, 'GAS', updateLocation.gasPrice);
+        updateLocation.cost_from_last = (parseInt(distances[i - 1]) / this.props.MPG * updateLocation.gasPrice).toFixed(2)
+        return updateLocation
+      }
+    })
   }
 
-  calculateTotalCost(totalMiles) {
-    const gas = (totalMiles / this.props.MPG * this.props.GasPrices).toFixed(2)
-    this.setState({totalCost: gas})
+  totalMiles(locationArray) {
+    const totalMiles = parseInt(locationArray.reduce((distanceAcc, gig) => {
+        return distanceAcc + parseInt(gig.distance_from_last)
+      }, 0), 10)
+    return totalMiles.toFixed(2)
   }
+
+  calculateTotalCost(locationArray) {
+    const totalCost = parseInt(locationArray.reduce((distanceAcc, gig) => {
+          return distanceAcc + parseInt(gig.cost_from_last)
+        }, 0), 10)
+    return totalCost.toFixed(2)
+  }
+
+//   render() {
+//     return (
+//         <div>
+//           <div id="totals">
+//             <div  id="totals-calculate-again"
+//                   onClick={() => this.updateTotals()}>
+//                   Click to Calculate
+//             </div>
+//             <div className="totals-labels">
+//               <h6 className="totals-labels-mpg total-label">MPG</h6>
+//               <h6 className="totals-labels-dates total-label">Total Shows</h6>
+//               <h6 className="totals-labels-distance total-label">Total Distance</h6>
+//               <h6 className="totals-labels-cost total-label">Gas Cost</h6>
+//               <h6 className="totals-labels-print total-label">Print</h6>
+//             </div>
+//             <div className="totals-card">
+//               {this.editMPG()}
+//               <h6 className="totals-card-mpg total" onClick={() => this.toggleMPGEdit()}>{this.props.MPG}</h6>
+//               <h6 className="totals-card-dates total">{this.props.Locations.length}</h6>
+//               <h6 className="totals-card-distance total">{this.state.totalMiles} miles</h6>
+//               <h6 className="total totals-card-cost">${this.state.totalCost}</h6>
+//               <h6 className="totals-card-print total"><img className = "print-icon" src="" /></h6>
+//             </div>
+//         </div>
+//       </div>
+//     )
+//   }
+// }
 
   render() {
-    if(this.props.Check !== this.props.Locations){
+    if(this.props.Check === false){
       return (
         <div id="totals">
           <div  id="totals-calculate"
-                onClick={() => this.distanceTotal()}>
+                onClick={() => this.updateLocations()}>
                 Click to Calculate
           </div>
         </div>
-      )}
+      )
+    }
     else {
       return (
         <div>
-          <div id="totals">
-            <div  id="totals-calculate-again"
-                  onClick={() => this.distanceTotal()}>
-                  Click to Calculate
-            </div>
+          <div id='totals'>
             <div className="totals-labels">
               <h6 className="totals-labels-mpg total-label">MPG</h6>
               <h6 className="totals-labels-dates total-label">Total Shows</h6>
@@ -99,8 +153,9 @@ export default class Totals extends Component {
               <h6 className="total totals-card-cost">${this.state.totalCost}</h6>
               <h6 className="totals-card-print total"><img className = "print-icon" src="" /></h6>
             </div>
+          </div>
         </div>
-      </div>
-    )}
+      )
+    }
   }
 }

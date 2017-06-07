@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import EditGigInfo from './EditGigInfo';
-import { editGig } from '../../actions/actions'
-import { selectGig } from '../../actions/actions'
+import { editGig, selectGig, handleSetCheck } from '../../actions/actions'
+
 
 function mapStateToProps(state) {
   return state
@@ -14,7 +14,10 @@ function mapDispatchToProps(dispatch) {
     },
     handleSelectGig: (gig) => {
       dispatch(selectGig(gig))
-    }
+    },
+    handleSetCheck: (check) => {
+      dispatch(handleSetCheck(check))
+    },
   }
 }
 

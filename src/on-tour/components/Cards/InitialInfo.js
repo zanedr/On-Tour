@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { fetchHelper } from '../../helpers/helpers'
+import { fetchHelper, gasFetch, getState } from '../../helpers/helpers'
 
 export default class InitialInfo extends Component {
   constructor(props){
@@ -14,15 +14,22 @@ export default class InitialInfo extends Component {
   }
 
   submitLocation(located) {
-    this.props.dispatcher({index: 0,
-                          order: 1,
-                          location: located.formatted_address,
-                          venue: "Home",
-                          distance_from_last: "0",
-                          cost_from_last: "",
-                          lat: located.geometry.location.lat,
-                          lng: located.geometry.location.lng,
-                          notes: ""}, this.state.mpg)
+    const addState = getState(located.formatted_address)
+    gasFetch(addState).then((price) => {
+      console.log('SUBMITSUBMIT', price);
+      this.props.dispatcher({index: 0,
+                            order: 1,
+                            location: located.formatted_address,
+                            venue: "Home",
+                            distance_from_last: "0",
+                            cost_from_last: "0",
+                            state: addState,
+                            lat: located.geometry.location.lat,
+                            lng: located.geometry.location.lng,
+                            notes: "",
+                            gasPrice: price}, this.state.mpg),
+      this.props.handleSetCheck(false)
+    })
   }
 
   queryLocation() {
@@ -30,7 +37,6 @@ export default class InitialInfo extends Component {
     fetchHelper(this.state.location)
     .then((res) => {
       this.setState({possibleLocation: res})
-      console.log('res', res);
     })
   }
 

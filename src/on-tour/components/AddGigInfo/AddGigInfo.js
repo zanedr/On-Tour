@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { fetchHelper } from '../../helpers/helpers'
+import { fetchHelper, adjustDistance, gasFetch, getState } from '../../helpers/helpers'
 
 export default class AddGigInfo extends Component {
   constructor(props) {
@@ -23,17 +23,24 @@ export default class AddGigInfo extends Component {
   }
 
   addGig(located) {
-    let card = {index: this.props.Locations.length,
-                order: this.props.Locations.length + 1,
-                location: located.formatted_address,
-                venue: this.state.venue,
-                distance_from_last: "0",
-                cost_from_last: "",
-                lat: located.geometry.location.lat,
-                lng: located.geometry.location.lng,
-                notes: this.state.notes}
-    this.props.handleAddLocation(card)
-    this.props.exit()
+    const { Locations } = this.props
+    const addState = getState(located.formatted_address)
+    gasFetch(addState).then((price) => {
+      const card = {index: Locations.length,
+                    order: Locations.length + 1,
+                    location: located.formatted_address,
+                    venue: this.state.venue,
+                    distance_from_last: "0",
+                    cost_from_last: "0",
+                    state: addState,
+                    lat: located.geometry.location.lat,
+                    lng: located.geometry.location.lng,
+                    notes: this.state.notes,
+                    gasPrice: price}
+        this.props.handleAddLocation(card)
+        this.props.handleSetCheck(false)
+        this.props.exit()
+    })
   }
 
   render() {
