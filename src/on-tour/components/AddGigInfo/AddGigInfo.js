@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { fetchHelper, adjustDistance, gasFetch, getState } from '../../helpers/helpers'
 
 export default class AddGigInfo extends Component {
   constructor(props) {
@@ -15,23 +16,31 @@ export default class AddGigInfo extends Component {
 
   queryLocation() {
     this.state.askLocationPopUp = true
-    fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.state.location}&key=AIzaSyDs3ljSEnfR3nRHOw9bHYwa9XPUjzaFnh0`)
-    .then(answer => answer.json())
+    fetchHelper(this.state.location)
     .then((res) => {
       this.setState({possibleLocation: res})
     })
   }
 
   addGig(located) {
-    let card = {index: this.props.Locations.length,
-                order: this.props.Locations.length + 1,
-                location: located,
-                venue: this.state.venue,
-                distance_from_last: "0",
-                cost_from_last: "",
-                notes: this.state.notes}
-    this.props.handleAddLocation(card)
-    this.props.exit()
+    const { Locations } = this.props
+    const addState = getState(located.formatted_address)
+    gasFetch(addState).then((price) => {
+      const card = {index: Locations.length,
+                    order: Locations.length + 1,
+                    location: located.formatted_address,
+                    venue: this.state.venue,
+                    distance_from_last: "0",
+                    cost_from_last: "0",
+                    state: addState,
+                    lat: located.geometry.location.lat,
+                    lng: located.geometry.location.lng,
+                    notes: this.state.notes,
+                    gasPrice: price}
+        this.props.handleAddLocation(card)
+        this.props.handleSetCheck(false)
+        this.props.exit()
+    })
   }
 
   render() {
@@ -67,7 +76,7 @@ export default class AddGigInfo extends Component {
           <input className="ask-location-submit"
             value="That's the one!"
             type="submit"
-            onClick={() => this.addGig(this.state.possibleLocation.results[0].formatted_address)} />
+            onClick={() => this.addGig(this.state.possibleLocation.results[0])} />
         </div>
       )
     }

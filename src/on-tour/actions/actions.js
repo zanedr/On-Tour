@@ -21,6 +21,13 @@ export const handleSetCheck = (check) => {
   }
 }
 
+export const handleUpdateGigList = (updatedGigs) => {
+  return {
+    type: 'UPDATE_GIG_LIST',
+    updatedGigs
+  }
+}
+
 export const editGig = (gig) => {
   return {
     type: 'EDIT_GIG',

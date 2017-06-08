@@ -1,7 +1,7 @@
 const Locations = (state = [], action) => {
   switch (action.type) {
     case 'ADD_LOCATION':
-      let currentLocations = state;
+      let currentLocations = state
       if(state.length) {
         currentLocations[currentLocations.length] = action.location
         return currentLocations
@@ -14,7 +14,7 @@ const Locations = (state = [], action) => {
         if(action.gig.index !== singleGig.index) {
           return singleGig
         }
-      });
+      })
       reorderedGigArray.splice(action.gig.order - 1, 0, action.gig)
       let correctedGigArray = []
       reorderedGigArray.forEach(singleGig => {
@@ -36,6 +36,9 @@ const Locations = (state = [], action) => {
         }
       })
       return updatedGigs
+
+    case 'UPDATE_GIG_LIST':
+      return action.updatedGigs
 
     default:
       return state

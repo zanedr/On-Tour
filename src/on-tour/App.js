@@ -18,6 +18,7 @@ export default class App extends React.Component {
   }
 
   initialDispatcher(location, mpg) {
+    console.log('APP LOCATION', location);
     this.setState({currentLocation: location})
     this.props.handleSetMPG(mpg)
     this.props.initialLocation(location)
