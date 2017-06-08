@@ -18,18 +18,22 @@ class Map extends Component {
   }
 
   render() {
-    const markers = this.props.markers || []
+    const markers = this.props.Locations || []
 
     return (
       <GoogleMap
         ref = {this.mapLoaded.bind(this)}
         defaultZoom={4}
         defaultCenter={{ lat: 35.2226, lng: -97.4395 }}>
-        
-        {markers.map((marker, index) => (
-           <Marker {...marker} />
-          )
-        )}
+
+        {markers.map((marker, index) => {
+         return <Marker
+                   key={index}
+                   position={{lat: marker.lat , lng: marker.lng}}
+                   label={marker.location.toString()}
+                 />
+             })
+        }
 
       </GoogleMap>
     )
@@ -98,12 +102,12 @@ export default withGoogleMap(Map)
 //     let Latitude = cityInfo.lat
 //     let Longitude = cityInfo.long
 //     if(Latitude !== '' && Longitude !== ''){
-//     return <Marker
-//               key={i}
-//               position={{lat: Latitude , lng: Longitude}}
-//               label={cityInfo.count.toString()}
-//               onClick={() => searchFromMap(location, city)}
-//             />
+    // return <Marker
+    //           key={i}
+    //           position={{lat: Latitude , lng: Longitude}}
+    //           label={cityInfo.count.toString()}
+    //           onClick={() => searchFromMap(location, city)}
+    //         />
 //     } else {
 //       return null
 //     }

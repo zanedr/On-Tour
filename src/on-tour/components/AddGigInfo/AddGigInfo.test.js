@@ -21,7 +21,10 @@ let mockStore = configureStore()({Locations: [],
                                          cost_from_last: '$1.00'}})
   const setup = () => {
 
-    const Container = mount(<Provider store={mockStore}><AddGigInfoContainer /></Provider>);
+    const Container = mount(
+      <Provider store={mockStore}>
+        <AddGigInfoContainer />
+      </Provider>);
     const Component = Container.find(AddGigInfo)
 
     return {
@@ -44,7 +47,7 @@ let mockStore = configureStore()({Locations: [],
 
   it('upon hitting submit, information should be forwarded', () => {
     const { Container, Component } = setup()
-    const query = sinon.spy(queryLocation)
+    const query = sinon.spy(Component.queryLocation)
 
 
     const submit = Component.find('.add-gig-info-save')

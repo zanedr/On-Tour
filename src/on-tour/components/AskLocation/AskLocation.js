@@ -15,7 +15,8 @@ export const AskLocation = (location) => {
 
   return (
     <div className="ask-location-container">
-      <button className="ask-location-exit" onClick={() => {exitAskLocation()}}>&times;</button>
+      <button className="ask-location-exit"
+        onClick={() => {exitAskLocation()}}>&times;</button>
       <h6 className="ask-loaction-text">Confirm Location</h6>
       <input className="ask-location-edit"
         defaultValue={presentLocation}

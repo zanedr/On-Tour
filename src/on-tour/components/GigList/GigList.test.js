@@ -65,7 +65,10 @@ describe('GigList testing', () => {
 
   const setup = () => {
 
-  const Container = mount(<Provider store={mockStore}><GigListContainer /></Provider>);
+  const Container = mount(
+    <Provider store={mockStore}>
+      <GigListContainer />
+    </Provider>);
 
   const Component = Container.find(GigList);
 

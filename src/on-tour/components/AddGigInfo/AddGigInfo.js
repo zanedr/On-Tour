@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { fetchHelper, adjustDistance, gasFetch, getState } from '../../helpers/helpers'
+import { fetchHelper, gasFetch, getState } from '../../helpers/helpers'
 
 export default class AddGigInfo extends Component {
   constructor(props) {
@@ -15,10 +15,10 @@ export default class AddGigInfo extends Component {
   }
 
   queryLocation() {
-    this.state.askLocationPopUp = true
     fetchHelper(this.state.location)
     .then((res) => {
-      this.setState({possibleLocation: res})
+      this.setState({possibleLocation: res,
+                     askLocationPopUp: true})
     })
   }
 
@@ -47,7 +47,8 @@ export default class AddGigInfo extends Component {
     if(!this.state.askLocationPopUp) {
       return (
         <article className="add-gig-info">
-          <button className="add-gig-info-exit" onClick={() => {this.props.exit()}}>&times;</button>
+          <button className="add-gig-info-exit"
+                  onClick={() => {this.props.exit()}}>&times;</button>
           <h3 className="add-gig-info-title">Add Gig</h3>
           <input className="add-gig-info-input add-gig-info-location"
                  type='text'
@@ -59,7 +60,8 @@ export default class AddGigInfo extends Component {
                  onChange={(e) => this.setState({venue: e.target.value})}/>
           <textarea cols="10"
                   className="add-gig-info-input add-gig-info-notes"
-                  placeholder='Notes' onChange={(e) => this.setState({notes: e.target.value})}/>
+                  placeholder='Notes'
+                  onChange={(e) => this.setState({notes: e.target.value})}/>
           <input className="add-gig-info-save"
                  type='submit'
                  placeholder='Save'
@@ -70,13 +72,19 @@ export default class AddGigInfo extends Component {
     else {
       return (
         <div className="ask-location-container">
-          <button className="ask-location-exit" onClick={() => {this.setState({askLocationPopUp: false})}}>Back</button>
+          <button className="ask-location-exit"
+                  onClick={() => {this.setState({askLocationPopUp: false})}}>
+            Back
+          </button>
           <h6 className="ask-location-text">Confirm Location</h6>
-          <p className='ask-location-option-text'>{this.state.possibleLocation.results[0].formatted_address}</p>
+          <p className='ask-location-option-text'>
+            {this.state.possibleLocation.results[0].formatted_address}
+          </p>
           <input className="ask-location-submit"
             value="That's the one!"
             type="submit"
-            onClick={() => this.addGig(this.state.possibleLocation.results[0])} />
+            onClick={() =>
+                this.addGig(this.state.possibleLocation.results[0])} />
         </div>
       )
     }

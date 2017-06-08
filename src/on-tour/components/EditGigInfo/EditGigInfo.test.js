@@ -21,7 +21,10 @@ let mockStore = configureStore()({Locations: [],
                                          cost_from_last: '$1.00'}})
   const setup = () => {
 
-    const Container = mount(<Provider store={mockStore}><EditGigInfoContainer /></Provider>);
+    const Container = mount(
+      <Provider store={mockStore}>
+        <EditGigInfoContainer />  
+      </Provider>);
     const Component = Container.find(EditGigInfo)
 
     return {

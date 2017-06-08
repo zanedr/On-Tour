@@ -487,15 +487,16 @@ input[type='text'] {
 
 .total {
   color: #000000;
-  padding: 10px 3vw;
+  padding: 0 3vw;
   font-size: 14px;
   font-weight: 300;
   width: 10vw;
   margin: 0;
+  text-align: center;
 }
 
 .totals-card-mpg {
-  padding-left: 4vw;
+  margin-top: 1vh;
 }
 
 .totals-card-mpg:hover {
@@ -510,6 +511,14 @@ input[type='text'] {
 .totals-card-distance {
   padding-left: 10px;
   font-size: 12px;
+}
+
+.totals-card-dates {
+  margin-top: 1vh;
+}
+
+.totals-card-cost {
+  margin-top: 1vh;
 }
 
 .totals-card-cost-blank {
