@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { fetchHelper, adjustDistance, gasFetch } from '../../helpers/helpers'
+import { fetchHelper, gasFetch } from '../../helpers/helpers'
 
 export default class EditGigInfo extends Component {
   constructor(props) {
@@ -15,7 +15,6 @@ export default class EditGigInfo extends Component {
   }
 
   editGigNewLocation(located) {
-    const { Locations } = this.props
     gasFetch(located.formatted_address.slice(-7, -5)).then((price) => {
       const gig = {index: this.props.SelectedGig.index,
                   order: this.state.order,
@@ -59,10 +58,10 @@ export default class EditGigInfo extends Component {
       this.editGigSameLocation(this.state.location)
     }
     else {
-      this.state.askLocationPopUp = true
       fetchHelper(this.state.location)
       .then((res) => {
-        this.setState({possibleLocation: res})
+        this.setState({possibleLocation: res,
+                       askLocationPopUp: true})
       })
     }
   }
@@ -72,7 +71,9 @@ export default class EditGigInfo extends Component {
       return (
         <article className="edit-gig-info">
           <button className="edit-gig-info-exit"
-                  onClick={() => {this.props.exit(this.state.notes)}}>&times;</button>
+                  onClick={() => {
+                    this.props.exit(this.state.notes)
+                  }}>&times;</button>
           <span className="edit-gig-info-order-container">
             <h3 className="edit-gig-info-title">Edit Gig</h3>
             <h6 className="edit-gig-info-order-text">Order:</h6>
@@ -107,7 +108,9 @@ export default class EditGigInfo extends Component {
       return (
         <div className="ask-location-container ask-location-edit-gig">
           <button className="ask-location-exit"
-                  onClick={() => {this.setState({askLocationPopUp: false})}}>Back</button>
+                  onClick={() => {this.setState({askLocationPopUp: false})}}>
+            Back
+          </button>
           <h6 className="ask-location-text">Confirm Location</h6>
           <p className='ask-location-option-text'>
             {this.state.possibleLocation.results[0].formatted_address}
@@ -115,7 +118,8 @@ export default class EditGigInfo extends Component {
           <input className="ask-location-submit"
             value="That's the one!"
             type="submit"
-            onClick={() => this.editGigNewLocation(this.state.possibleLocation.results[0])} />
+            onClick={() =>
+              this.editGigNewLocation(this.state.possibleLocation.results[0])} />
         </div>
       )
     }

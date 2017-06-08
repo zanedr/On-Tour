@@ -1,8 +1,6 @@
 import { connect } from 'react-redux';
 import GigList from './GigList';
-import { selectGig } from '../../actions/actions'
-import { deleteGig } from '../../actions/actions'
-import { clearSelectGig } from '../../actions/actions'
+import { selectGig, deleteGig, clearSelectGig, handleSetCheck } from '../../actions/actions'
 
 function mapStateToProps(state) {
   return state
@@ -18,7 +16,10 @@ function mapDispatchToProps(dispatch) {
     },
     clearSelectGig: (gig) => (
       dispatch(clearSelectGig(gig))
-    )
+    ),
+    handleSetCheck: (check) => {
+      dispatch(handleSetCheck(check))
+    },
   }
 }
 

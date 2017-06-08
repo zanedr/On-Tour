@@ -1,11 +1,4 @@
-import React, { Component } from 'react'
 import { googleAPIKey, doeAPIKey} from '../APIKeys'
-
-export const dynamicGasPrices = () => {
-  fetch(`http://api.eia.gov/category/?api_key=${doeAPIKey}&category_id=240691`)
-  .then(res => res.json())
-  .then(ans => console.log('dynamic', ans))
-}
 
 export const fetchHelper = (address) => {
   return fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${googleAPIKey}`)
@@ -21,7 +14,7 @@ export const adjustDistance = (origin, destination) => {
     return parseInt(
               res.rows[0].elements[0].distance.text
               .replace(/([^1234567890.])+/g,'')
-           )  .toFixed(1)
+           , 10).toFixed(1)
   })
 }
 
@@ -32,12 +25,10 @@ export const getState = (address) => {
 }
 
 export const gasFetch = (state) => {
-  console.log('GAS STATE', state);
   return fetch(`http://api.eia.gov/series/?api_key=${doeAPIKey}&series_id=${gasQuery(state)}`)
   .then(res => res.json())
   .then(ans => {
       return ans.series["0"].data["0"]["1"]
-      console.log('GAS ANS', ans);
   }).catch(console.log('GAS CATCH'))
 }
 
@@ -135,108 +126,3 @@ export const gasQuery = (state) => {
       return `PET.EMM_EPMRU_PTE_R5XCA_DPG.W`
   }
 }
-
-const stubtown = [{
-  destination_addresses: [
-    "San Francisco, CA, USA"
-      ],
-      origin_addresses: [
-        "Denver, CO, USA"
-        ],
-        rows: [
-          {
-          elements: [
-          {
-          distance: {
-          text: "1,254 mi",
-          value: 2018513
-          },
-          duration: {
-          text: "18 hours 36 mins",
-          value: 66951
-          },
-        status: "OK"
-        }
-      ]
-    }
-  ],
-  status: "OK"
-},
-{
-destination_addresses: [
-"Los Angeles, CA, USA"
-],
-origin_addresses: [
-"San Francisco, CA, USA"
-],
-rows: [
-{
-elements: [
-{
-distance: {
-text: "383 mi",
-value: 616623
-},
-duration: {
-text: "5 hours 40 mins",
-value: 20410
-},
-status: "OK"
-}
-]
-}
-],
-status: "OK"
-},
-{
-destination_addresses: [
-"Portland, OR, USA"
-],
-origin_addresses: [
-"Los Angeles, CA, USA"
-],
-rows: [
-{
-elements: [
-{
-distance: {
-text: "963 mi",
-value: 1549343
-},
-duration: {
-text: "14 hours 34 mins",
-value: 52458
-},
-status: "OK"
-}
-]
-}
-],
-status: "OK"
-},
-{
-destination_addresses: [
-"New York, NY, USA"
-],
-origin_addresses: [
-"Portland, OR, USA"
-],
-rows: [
-{
-elements: [
-{
-distance: {
-text: "2,897 mi",
-value: 4661625
-},
-duration: {
-text: "1 day 19 hours",
-value: 153284
-},
-status: "OK"
-}
-]
-}
-],
-status: "OK"
-}]

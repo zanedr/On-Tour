@@ -46,27 +46,3 @@ const Locations = (state = [], action) => {
   }
 
 export default Locations
-
-// let reorder = 0;
-// let reorderedGig = action.gig;
-// reorderedGig.index = action.gig.order - 1
-// reorderedGigs[reorderedGig.index] = reorderedGig
-// state.forEach((singleGig, gigIndex) => {
-//   if(singleGig.order === action.gig.order) {
-//     reorder++
-//   }
-//   else if(reorder === singleGig.index) {
-//     reorder++
-//     singleGig.index = reorder;
-//     singleGig.order = reorder + 1;
-//     reorderedGigs[reorder] = singleGig
-//     reorder++
-//   }
-//   else {
-//     singleGig.index = reorder
-//     singleGig.order = reorder + 1
-//     reorderedGigs[reorder] = singleGig
-//     reorder++
-//   }
-// })
-// return reorderedGigs

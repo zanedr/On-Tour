@@ -1,5 +1,3 @@
-// import thunk from 'redux-thunk'
-
 export const handleSetMPG = (mpg)  =>  {
   return {
     type: 'SET_MPG',
@@ -63,11 +61,11 @@ export const setGasPrices = (gas) => {
   }
 }
 
-export const gasPrices = () => {
-  return (dispatch) => {
-    fetch('http://api.eia.gov/series/?api_key=a9b717b70e6b150a26e37aaded30b914&series_id=PET.EMM_EPMRU_PTE_NUS_DPG.W')
-    .then(res => res.json())
-    .then((gas) => {dispatch(setGasPrices(gas))})
-    .catch(error => {throw(error)})
-  }
-}
+// export const gasPrices = () => {
+//   return (dispatch) => {
+//     fetch('http://api.eia.gov/series/?api_key=a9b717b70e6b150a26e37aaded30b914&series_id=PET.EMM_EPMRU_PTE_NUS_DPG.W')
+//     .then(res => res.json())
+//     .then((gas) => {dispatch(setGasPrices(gas))})
+//     .catch(error => {throw(error)})
+//   }
+// }

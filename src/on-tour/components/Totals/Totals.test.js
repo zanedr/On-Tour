@@ -17,7 +17,7 @@ let locations = [{location: 'Mt. Doom, CO',
                                             distance_from_last: '20 miles',
                                             cost_from_last: '$1.00'}]
 
-let mockStore = configureStore()({Locations: locations,
+let mockStore = configureStore()({Locations: fakeData,
                                    Check: locations,
                                    GasPrices: 2.00,
                                    MPG: 20,
@@ -89,4 +89,54 @@ let mockStore = configureStore()({Locations: locations,
     expect(distancelabel.length).toEqual(1)
     expect(distance.length).toEqual(1)
   })
+
+  it('total miles should sum the distance_from_last property from each card', () => {
+    const { Container, Component } == setup()
+
+    const distanceSum = Component.calculateTotalCost(Component.nodes[0].props.Locations.)
+  })
 })
+
+const fakeData = [{location: 'Denver, CO',
+                   venue: 'Cervantes',
+                   index: 0,
+                   order: 1,
+                   notes: '',
+                   distance_from_last: '20 miles',
+                   cost_from_last: '$1.00'},
+                  {location: 'Colorado Springs, CO',
+                   venue: 'Tim\'s basement',
+                   index: 1,
+                   order: 2,
+                   notes: '',
+                   distance_from_last: '20 miles',
+                   cost_from_last: '$1.00'},
+                  {location: 'Bangladesh, CO',
+                   venue: 'A beach',
+                   index: 2,
+                   order: 3,
+                   notes: '',
+                   distance_from_last: '20 miles',
+                   cost_from_last: '$1.00'},
+                  {location: 'Durango, CO',
+                   venue: 'In a cave',
+                   index: 3,
+                   order: 4,
+                   notes: '',
+                   distance_from_last: '20 miles',
+                   cost_from_last: '$1.00'},
+                  {location: 'The Great Wall, CO',
+                   venue: 'A rock',
+                   index: 4,
+                   order: 5,
+                   notes: '',
+                   distance_from_last: '20 miles',
+                   cost_from_last: '$1.00'},
+                  {location: 'Mt. Doom, CO',
+                   venue: 'Big Ernie\'s Pizza',
+                   index: 5,
+                   order: 6,
+                   notes: '',
+                   distance_from_last: '20 miles',
+                   cost_from_last: '$1.00'}
+                  ]

@@ -3,7 +3,6 @@ import AppReducer from './AppReducer'
 import Locations from './Locations'
 import MPG from './MPG'
 import SelectedGig from './SelectedGig'
-import GasPrices from './GasPrices'
 import Check from './Check'
 
 const rootReducer = combineReducers({
@@ -11,7 +10,6 @@ const rootReducer = combineReducers({
   Check,
   Locations,
   MPG,
-  GasPrices,
   SelectedGig,
 })
 

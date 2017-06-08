@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import EditGigInfoContainer from '../EditGigInfo/EditGigInfoContainer'
-import { notesNotes } from './notesNotes'
 
 export default class Notes extends Component {
   constructor(props){
@@ -22,9 +21,10 @@ export default class Notes extends Component {
   }
 
   editGigInfo() {
-    if(this.state.editGig == true) {
+    if(this.state.editGig === true) {
       return (
-        <EditGigInfoContainer marker={this.props.gig.index} exit={this.exitEditGig.bind(this)}/>
+        <EditGigInfoContainer marker={this.props.gig.index}
+                              exit={this.exitEditGig.bind(this)}/>
       )
     }
   }
@@ -46,7 +46,8 @@ export default class Notes extends Component {
       <div id="note-card">
         <div id="notes-header">
           <h5 className = "note-list">Notes {this.gigInfo()}</h5>
-          <button className = "note-button" onClick = {() => this.setEditGig()}>Edit</button>
+          <button className = "note-button"
+                  onClick = {() => this.setEditGig()}>Edit</button>
         </div>
         <div id="notes-editor">
           {this.gigNotes()}

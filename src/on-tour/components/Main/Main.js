@@ -3,12 +3,8 @@ import GigListContainer from '../GigList/GigListContainer'
 import TotalsContainer from '../Totals/TotalsContainer'
 import MapHolderContainer from '../MapHolder/MapHolderContainer'
 import NotesContainer from '../Notes/NotesContainer'
-import { dynamicGasPrices } from '../../helpers/helpers'
 
 export default class Main extends Component {
-  constructor(props) {
-    super(props)
-  }
 
   componentWillMount() {
     this.props.handleSetCheck(false)
