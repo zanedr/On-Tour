@@ -30,7 +30,6 @@ class Map extends Component {
          return <Marker
                    key={index}
                    position={{lat: marker.lat , lng: marker.lng}}
-                   label={marker.location.toString()}
                  />
              })
         }

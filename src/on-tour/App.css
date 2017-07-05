@@ -496,7 +496,7 @@ input[type='text'] {
 }
 
 .totals-card-mpg {
-  margin-top: 1vh;
+  padding-top: 1.5vh;
 }
 
 .totals-card-mpg:hover {
@@ -509,16 +509,17 @@ input[type='text'] {
 }
 
 .totals-card-distance {
+  padding-top: .5vh;
   padding-left: 10px;
   font-size: 12px;
 }
 
 .totals-card-dates {
-  margin-top: 1vh;
+  margin-top: 1.5vh;
 }
 
 .totals-card-cost {
-  margin-top: 1vh;
+  margin-top: 1.5vh;
 }
 
 .totals-card-cost-blank {

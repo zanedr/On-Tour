@@ -97,9 +97,9 @@ export default class Totals extends Component {
   }
 
   calculateTotalCost(locationArray) {
-    const totalCost = parseInt(locationArray.reduce((distanceAcc, gig) => {
+    const totalCost = locationArray.reduce((distanceAcc, gig) => {
           return distanceAcc + parseInt(gig.cost_from_last, 10)
-        }, 0), 10)
+        }, 0)
     return totalCost.toFixed(2)
   }
 

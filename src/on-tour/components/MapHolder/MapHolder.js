@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
 import MapContainer from './MapContainer'
 
 export default class MapHolder extends Component {
@@ -19,5 +18,3 @@ export default class MapHolder extends Component {
     )
   }
 }
-
-//AIzaSyDs3ljSEnfR3nRHOw9bHYwa9XPUjzaFnh0
