@@ -17,7 +17,6 @@ export default class InitialInfo extends Component {
     const located = this.state.possibleLocation.results[0]
     const addState = getState(located.formatted_address)
     gasFetch(addState).then((price) => {
-      console.log('SUBMITSUBMIT', price);
       this.props.dispatcher({index: 0,
                             order: 1,
                             location: located.formatted_address,
@@ -36,7 +35,6 @@ export default class InitialInfo extends Component {
   queryLocation() {
     fetchHelper(this.state.location)
     .then((res) => {
-      console.log('RESE RES', res);
       this.setState({possibleLocation: res,
                      askLocationPopUp: true})
     })
