@@ -3,6 +3,7 @@
   "author": "Zane Russell",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://zanedr.github.io/On-Tour",
   "dependencies": {
     "google-maps-react": "^1.0.19",
     "react": "^15.5.4",
@@ -24,6 +25,7 @@
     "babel-preset-react": "^6.24.1",
     "enzyme": "^2.8.2",
     "fetch-mock": "^5.11.0",
+    "gh-pages": "^1.0.0",
     "jest": "^20.0.4",
     "jest-enzyme": "^3.2.0",
     "react-addons-test-utils": "^15.5.1",
@@ -35,6 +37,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   }
 }

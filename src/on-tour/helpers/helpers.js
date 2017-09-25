@@ -25,7 +25,7 @@ export const getState = (address) => {
 }
 
 export const gasFetch = (state) => {
-  return fetch(`http://api.eia.gov/series/?api_key=${doeAPIKey}&series_id=${gasQuery(state)}`)
+  return fetch(`https://api.eia.gov/series/?api_key=${doeAPIKey}&series_id=${gasQuery(state)}`)
   .then(res => res.json())
   .then(ans => {
       return ans.series["0"].data["0"]["1"]

@@ -1,3 +1,1 @@
-### On Tour
-
-On Tour is an aid for musicians who want a better idea of travel cost before committing to the road. 
+On Tour is a gas calculator for bands on the road. Utilizing the GoogleMaps API, the U.S. Energy Information Administration API, and data provided by the user, On Tour will calculate distances and total cost with respect to local gas prices and return an estimate. Notes can be stored within each location for easy recall.
